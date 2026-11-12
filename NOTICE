@@ -1,0 +1,36 @@
+TBridge
+Copyright 2026 MVennn
+
+This product includes software developed as part of the TBridge project
+(https://github.com/MVennn/TBridge), licensed under the Apache License,
+Version 2.0.
+
+==============================================================================
+Third-party components
+
+This product incorporates third-party software under the following licenses:
+
+- libxposed (io.github.libxposed:api:102.0.0, io.github.libxposed:annotation:1.0.0)
+  https://github.com/libxposed/api
+  Licensed under the Apache License, Version 2.0.
+  Used as compileOnly against the modern Xposed API (API 102); these artifacts
+  are provided by the framework at runtime and are not distributed in the APK.
+
+- Kotlin standard library (JetBrains)
+  https://github.com/JetBrains/kotlin
+  Licensed under the Apache License, Version 2.0.
+  Implementation language; the Kotlin standard library is distributed with
+  this APK.
+
+- Gradle / Android Gradle Plugin / Kotlin Gradle Plugin
+  https://gradle.org/
+  Licensed under the Apache License, Version 2.0.
+  Build-time tooling only; these plugins are not distributed with the APK.
+
+==============================================================================
+Notes
+
+TBridge does not depend on any third-party UI, networking, or JSON runtime
+library. The JSON encoder/decoder used by the bridge is hand-written in
+Json.kt; no Gson or other JSON library is bundled. The module declares no
+Android permissions and contains no network-upload or data-collection code.

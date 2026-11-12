@@ -1,0 +1,94 @@
+name: 问题反馈（Bug）
+description: ping 连不上、tree 空树、tap 点不动、shot 黑图等问题
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈！请尽量把下面的信息填全，尤其是 **ping / tree 的实际输出**——
+        没有现场输出的问题很难定位，多半只能来回追问。
+
+  - type: checkboxes
+    id: acknowledgment
+    attributes:
+      label: 反馈前确认
+      options:
+        - label: 我已阅读并同意仓库中的免责声明（docs/DISCLAIMER.md）。
+          required: true
+        - label: 我先翻过 docs/TROUBLESHOOTING.md 的对应现象，仍未解决。
+          required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 出了什么问题
+      description: 现象 + 复现步骤：发了什么 op、预期什么响应、实际什么。
+      placeholder: |
+        例：
+        1. adb forward tcp:27110 localabstract:tb.com.example
+        2. python tools/tbridge.py com.example ping
+        3. 预期带 ms 的 pong；实际连接立刻 EOF
+    validations:
+      required: true
+
+  - type: input
+    id: module-version
+    attributes:
+      label: 模块版本号
+      description: LSPosed 模块列表里能看到，或 ping 响应里的 version 字段
+      placeholder: "例：1.0.0（versionCode 1）"
+    validations:
+      required: true
+
+  - type: input
+    id: target-package
+    attributes:
+      label: 目标 App 包名
+      placeholder: "例：com.example.app"
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: 机型、安卓版本与 LSPosed 版本
+      placeholder: "例：Redmi K60 / Android 14 / LSPosed 1.10.x"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: LSPosed 作用域勾了目标 App 吗
+      options:
+        - 已勾选，且强停目标 App 后重开过
+        - 没勾 / 不确定
+    validations:
+      required: true
+
+  - type: textarea
+    id: bridge-output
+    attributes:
+      label: ping / tree / 相关命令输出
+      description: 贴原始一行 JSON 响应，别贴截图里的字。
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: lsposed-log
+    attributes:
+      label: LSPosed 模块日志（可选）
+      description: |
+        电脑连上手机后执行下面这条，把输出整段贴进来：
+        adb shell su -c "grep -i tbridge /data/adb/lspd/log/modules_*.log | tail -50"
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 截图或录屏（可选）
+    validations:
+      required: false

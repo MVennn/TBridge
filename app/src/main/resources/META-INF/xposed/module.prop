@@ -1,0 +1,10 @@
+# TBridge —— 通用测试桥（现代 Xposed API / libxposed）
+#
+# 与 GSAuxiliary 不同，本模块**不固定作用域**：它要对任意被测 App 生效，
+# 所以 staticScope 必须为 false，由用户在 LSPosed Manager 里按需勾选。
+minApiVersion=102
+targetApiVersion=102
+staticScope=false
+# hooker 抛异常时目标 App 不能崩 —— 测试工具把被测 App 搞崩是最坏的结果。
+exceptionMode=protective
+autoHotReload=true

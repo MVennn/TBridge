@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+      纯注入式模块：没有 Activity，没有桌面图标。
+      LSPosed Manager 靠 META-INF/xposed/module.prop 识别它是模块，
+      靠 java_init.list 知道入口类名，不需要任何组件声明。
+
+      权限说明：什么都不申请 —— socket 走 abstract unix socket，
+      不需要 INTERNET，也不需要任何 runtime permission。
+    -->
+    <application
+        android:allowBackup="false"
+        android:label="@string/app_name"
+        android:supportsRtl="false" />
+</manifest>

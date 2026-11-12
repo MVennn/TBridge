@@ -1,0 +1,57 @@
+# Android / Gradle
+.gradle-home/
+.android-home/
+.tmp/
+# 构建产物副本
+apkout/
+dist/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+build/
+.gradle/
+.kotlin/
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+*.hprof
+
+# 签名材料
+*.keystore
+*.jks
+keystore.properties
+
+# IDE / 编辑器
+.idea/
+*.iml
+*.swp
+.vscode/
+
+# Python（tools/ 下的门禁脚本）
+__pycache__/
+*.py[cod]
+
+# 本地调试产物
+.work/
+*.log
+# 审计 / 排查证据分片（子代理产出，属过程记录，不进库）
+evidence/
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 品牌图片例外（WxPicLabe 基底无 *.png 全局忽略；下列否定规则为预防性保留，
+# 避免日后或继承的全局规则误伤 assets/ 与 res/ 下的品牌图）
+!app/src/main/res/**/*.png
+!assets/*.png
+!assets/*.ico
+
+# 本地调试 / 桥产物
+*.b64
+shot.png
+*.db-wal
+*.db-shm
