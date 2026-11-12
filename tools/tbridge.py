@@ -106,7 +106,7 @@ class Bridge:
 
 def _main(argv):
     if len(argv) < 3:
-        print("usage: tbridge.py <pkg> <ping|act|tree|find|tap|shot> [args]", file=sys.stderr)
+        print("usage: tbridge.py <pkg> <ping|act|tree|find|tap|wait|settext|tapif|multi|shot> [args]", file=sys.stderr)
         return 2
     pkg, sub = argv[1], argv[2]
     b = Bridge(pkg, serial=os.environ.get("DEVICE")).connect()

@@ -39,4 +39,4 @@ tag 自带构建号，回退与覆盖安装时一眼能看出先后；标题塞�
 2. 只有明确说「发版」才：升两处版本号 → 写 `CHANGELOG.md` → 出 Release 正文 → 打 `{versionCode}-{versionName}` tag → 发 Release（标题 `v{versionName}`，资产按第 2 节改名）。
 3. 用户可感知的改动进 `CHANGELOG.md`；修缺陷另在 [PITFALLS.md](PITFALLS.md) 补「现象 → 根因 → 怎么避」三段，见 [DOC-RULES.md](DOC-RULES.md) §8。
 
-**本次是首次建仓**：`versionCode = 1` / `versionName = 1.0.0` 原样保留，不打 tag、不发 Release、不改 `Ui.version`。构建与产物见 [BUILD.md](BUILD.md)。
+**首次发布即 1.0.0**：`versionCode = 1` / `versionName = 1.0.0` 原样作为首个正式版本发出 —— 建仓时先不打 tag，等仓库第一次对外时再按本节补上 tag `1-1.0.0`、Release 标题 `v1.0.0` 与资产 `TBridge_1-1.0.0.apk`（首个版本不需要为了「打过 tag」而先占一个 1.0.1）。此后每次发版按第 1 节进位、第 3 节两处同步。构建与产物见 [BUILD.md](BUILD.md)。
