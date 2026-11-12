@@ -33,4 +33,4 @@
 | --- | --- |
 | [DISCLAIMER.md](DISCLAIMER.md) | 免责声明全文（根 README 里只放摘要） |
 
-新增 / 改名 / 删除文档后，先改本表再跑 `python tools/check-docs.py`，退出码 0 才算完成。根 README 是七段式门面，指向本仓文档的链接用 GitHub 绝对地址，不放文档索引链接。
+新增 / 改名 / 删除文档后，先改本表再跑 `python tools/check-docs.py`；索引同步、断链与门面链接口径见 [DOC-RULES.md](DOC-RULES.md) §5–§6。

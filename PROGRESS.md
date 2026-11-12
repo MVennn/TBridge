@@ -21,7 +21,6 @@
 - `local.properties.example`：从 WxPicLabe 复制（3 行，`<REPLACE-ANDROID-SDK-DIR>`）
 
 **验证**
-- 门禁、`git` 与 GitHub 推送由主线统一执行并回填本段。
 - 本分片逐文件复核：抬头、行数、字节、链接、无本机绝对路径、UTF-8 无 BOM / LF 换行。
 
 ---
@@ -51,4 +50,4 @@
 
 **发版**：本次不升版本号、不打 tag、不发 Release。
 
-**收尾**：首次提交、`gh repo create --public --source --push`、CI 核验与项目记忆回写由主线在本批后续追加。
+**收尾**：首次提交、GitHub 公开仓发布、CI 核验与项目记忆三篇回写均由主线完成，本批闭环。

@@ -57,10 +57,7 @@
 
 ## 9. 当前阶段
 
-- 源码四个文件，各管一段：`TBridgeModule.kt`（XposedModule 入口，hook `Activity.onResume` 与 `ViewRootImpl.setView` 抓 root View，`system_server` 里 detach，`onHotReloaded` 只 unhook + `Ui.clearRoots()`、不重启 socket）；`BridgeServer.kt`（`android.net.LocalServerSocket`，`SOCKET_PREFIX="tb."`，手写 JSON 收发）；`Ui.kt`（主线程同步 `onMain(timeoutMs=3000)`、三路点击 `dispatchTouchEvent`→`performClick`→none、`View.draw` 出 PNG）；`Json.kt`（手写 JSON，不引第三方）。入口 `java_init.list` = `io.github.MVennn.tbridge.TBridgeModule`。架构见 `docs/ARCHITECTURE.md`。
-- 通道：`adb forward tcp:27110 localabstract:tb.<包名>`，一行 JSON 请求 / 一行 JSON 响应，响应统一带 `ms`；`op = ping/act/tree/find/tap/settext/shot`。协议见 `docs/PROTOCOL.md`。
-- 三个必须记住的坑（详见 `docs/PITFALLS.md`）：① 冷启动窗口期，`onPackageReady` 前 socket 不存在，先轮询 `ping` 再操作；② 弹窗时有时无，用 `tapif TEXT [SEC]`，别用 `wait` 硬等 8 秒；③ `View.draw` 画不出 SurfaceView / TextureView / WebView / Flutter / RN，这类退回 `screencap`。
-- 另两个：作用域改 `modules_config.db` 后必须 `setprop ctl.restart zygote`，且 WAL 要连 `db-wal` / `db-shm` 一起拉；热重载只清 View 引用、不重启 socket。
+本节只记「去哪查」，不重复定义规则（见 `docs/DOC-RULES.md` §2 单一正本映射）：架构与四个 Kotlin 源文件职责见 `docs/ARCHITECTURE.md`；通道与 `op` 协议见 `docs/PROTOCOL.md`；CLI 用法见 `docs/CLI.md`；必须记住的坑见 `docs/PITFALLS.md`；排错流程见 `docs/TROUBLESHOOTING.md`。
 
 ## 10. 构建
 
@@ -69,7 +66,7 @@
 - SDK 解析顺序：环境 `ANDROID_SDK_ROOT` / `ANDROID_HOME`（须存在）→ `local.properties` 的 `sdk.dir`；构建配置里不写死任何绝对路径。
 - `libxposed` 的 `api` / `annotation` 都是 `compileOnly`，不进 APK；没有其它运行期依赖。
 
-## 11. 门面与文档口径（系列仓基准 = WxPicLabe）
+## 11. 门面与文档口径（格式基准 = GSAuxiliary，落地参照 = WxPicLabe）
 
 - README 是**七段式**：`<div align="center">` logo + 标题 + 一行粗体定位 + 标语 + 徽章 `</div>` → 这是什么 / 环境要求 / 安装 / 反馈 / 免责声明 / 开源鸣谢 / 许可证。**禁止「一句话」引言块**，也不链 `docs/README.md` 索引；README 只做概述，机制 / 协议 / 构建 / 排错细节链接到 docs 正本。
 - 根目录**文档**只留 `README / CHANGELOG / CONTRIBUTING / SECURITY / LICENSE / NOTICE / AGENTS / PROGRESS`；构建骨架（`build.gradle.kts` / `settings.gradle.kts` / `gradlew` / `app/` / `assets/` / `gradle/` / `tools/`）按实际结构保留；开发者文档下沉到 `docs/`。
