@@ -61,4 +61,28 @@
 - ⑤ 微扫：保留 `.work/quality_check.py` 作回滚点，删 `commit_msg.txt`；全仓无 `*.bak` / `*.tmp` 残留。
 - ⑥ 三查后判定本轮无新增热条目价值，不写流水账。
 
+---
+
+## 2026-11-12 · 门面跟进与 1.0.0 首发
+
+**需求（用户）**：门面与当前代码对齐（门面跟进），并完成首次发布。
+
+**改动**
+
+- `tools/tbridge.py`：`usage` 由残缺的 `<pkg> <ping|act|tree|find|tap>` 补成真实十项 `ping|act|tree|find|tap|wait|settext|tapif|multi|shot`
+
+- `docs/VERSIONING.md` §4：收尾说明由「首次建仓不打 tag、不发 Release」改为首发口径
+
+- `CHANGELOG.md`：`[Unreleased]` 并入 `1.0.0`
+
+**发版**
+
+- 版本号保持 versionCode 1 / versionName 1.0.0（首次发布即 1.0.0）
+
+- `gradlew :app:assembleDebug` 编出 `app/build/outputs/apk/debug/app-debug.apk`（923,487 B，sha256 `D793DDC01131ADA9593F7B0967C7D0B8565735F230DE68E48047CF63577DE968`）
+
+- tag `1-1.0.0`、Release `v1.0.0` 带资产 `TBridge_1-1.0.0.apk`；CI 全绿
+
+**提交**：`3332468` chore(release): 1.0.0 首发口径与变更记录。
+
 [[TASK_ALL_DONE]]
