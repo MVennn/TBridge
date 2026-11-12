@@ -51,3 +51,14 @@
 **发版**：本次不升版本号、不打 tag、不发 Release。
 
 **收尾**：首次提交、GitHub 公开仓发布、CI 核验与项目记忆三篇回写均由主线完成，本批闭环。
+
+**收尾审计（2026-11-12 第二批）**
+
+- ③ 二次收敛：`AGENTS.md` §9 复述改为五篇 docs 正本指针，§11 统一「格式基准 = GSAuxiliary，落地参照 = WxPicLabe」；`docs/README.md` 索引同步口径转指 `DOC-RULES.md` §5–§6；`CHANGELOG.md` [Unreleased] 与 `docs/PITFALLS.md` #10 双记账。
+- 记忆层六篇去重与拆入链：`tbridge` / `lsposed` / `f-project` / `gsauxiliary` / `windowsremoteops` / `zcodetpsbadge`；正式 `sync-doc-index.mjs` 后 `fixed=0 clean=102 missing=0`。
+- 门禁：`check-docs.py` exit 0（10 篇）、`check-secrets.py` exit 0（49 文件 0 命中）、`.work/quality_check.py` VERDICT PASS、`check-memory-hygiene.mjs` exit 0（PASS 19 / WARN 2 / FAIL 0）。
+- ④ 推送：`9dfcac8` → `origin/main`；CI run `43208138193`（workflow_dispatch）复验。
+- ⑤ 微扫：保留 `.work/quality_check.py` 作回滚点，删 `commit_msg.txt`；全仓无 `*.bak` / `*.tmp` 残留。
+- ⑥ 三查后判定本轮无新增热条目价值，不写流水账。
+
+[[TASK_ALL_DONE]]
