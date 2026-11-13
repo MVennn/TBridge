@@ -62,6 +62,6 @@
 
 - **现象**：收尾审计发现记忆正本写「docs 十篇 + 唯一索引」「tools 七脚本」，实测 `docs/` 是 9 篇正文 + 索引共 10 个 `.md`、`tools/` 是 5 个 `.py` + `README.md` 共 6 个文件；另有 `[[repo-facade-and-release]]` 等 wiki 链接指向 2026-11-10 已归档的 `_shared` 篇，`index.json` 已无对应条目。
 - **根因**：门面清单把「文件总数」与「正文篇数」两套口径混写，写入时未用目录实测；归档旧篇只删正本、未拆入链，`check-docs.py` 的 D6 只查相对链接可解析，查不出语义失效。
-- **怎么避**：数字一律以 `pwsh Get-ChildItem -LiteralPath` 实测定稿并写成「N 篇正文 + 唯一索引（共 M 个 .md）」；归档前先把所有入链改指现行正本实文（仓外父目录 `AGENTS.md` 的目录地图 + 规范仓 `docs/REPO-STANDARD.md` + 各仓 `docs/DOC-RULES.md` + 基准仓 `docs/RELEASE.md`），只挂 `[[链接]]` 不算分流；收尾复跑 `python tools/check-docs.py` 与 `sync-doc-index.mjs --dry-run` 双门禁。公开仓文档不写本机盘符绝对路径。
+- **怎么避**：数字一律以 `pwsh Get-ChildItem -LiteralPath` 实测定稿并写成「N 篇正文 + 唯一索引（共 M 个 .md）」；归档前先把所有入链改指现行正本实文（仓外父目录 `AGENTS.md` 的目录地图 + ZCodeTpsBadge 的 `docs/REPO-STANDARD.md` + 各仓 `docs/DOC-RULES.md` + GSAuxiliary 的 `docs/RELEASE.md`），只挂 `[[链接]]` 不算分流；收尾复跑 `python tools/check-docs.py` 与 `sync-doc-index.mjs --dry-run` 双门禁。公开仓文档不写本机盘符绝对路径。
 
 
